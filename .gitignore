@@ -1,8 +1,8 @@
 # Ephemeral Sandboxed Runner .gitignore
 
 # Executables
-runner
-runner.exe
+/runner
+/runner.exe
 *.exe
 *.dll
 *.so

@@ -39,7 +39,7 @@ jobs:
 
       # 1. Automated Unit Tests
       - name: Run Package Unit Tests
-        run: go test -v ./pkg/sandbox/...
+        run: go test -v ./...
 
       # 2. Smoke Test: Verify Compilation & Configuration Loading
       - name: Execute Build Smoke Test
@@ -49,7 +49,11 @@ jobs:
       - name: Verify Dry-Run Output (Smoke Verification)
         shell: bash
         run: |
-          ./runner
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            ./runner.exe
+          else
+            ./runner
+          fi
 
   # =========================================================================
   # JOB 2: Live Kubernetes Integration & Capability Compliance ("Captain")

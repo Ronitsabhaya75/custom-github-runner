@@ -45,8 +45,8 @@ func NewRunnerOrchestrator(kubeconfigPath string) (*RunnerOrchestrator, error) {
 		return &RunnerOrchestrator{DryRun: true}, nil
 	}
 
-	// Verify live connection to the cluster API endpoint
-	_, err = clientset.CoreV1().Nodes().List(context.TODO(), metav1.ListOptions{})
+	// Verify live connection to the cluster API endpoint (RBAC-safe discovery check)
+	_, err = clientset.Discovery().ServerVersion()
 	if err != nil {
 		fmt.Printf("⚠️  [Orchestrator] Local cluster endpoint unreachable. Switching to High-Fidelity Sandbox Simulation Mode to prevent disk I/O freezes.\n")
 		return &RunnerOrchestrator{DryRun: true}, nil

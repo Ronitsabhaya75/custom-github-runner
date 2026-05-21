@@ -1,4 +1,4 @@
-# 🚀 Sandboxed Kubernetes GitHub Actions Runner
+# Sandboxed Kubernetes GitHub Actions Runner
 
 [![ephemera-ci-pipeline](https://github.com/Ronitsabhaya75/custom-github-runner/actions/workflows/ci.yml/badge.svg)](https://github.com/Ronitsabhaya75/custom-github-runner/actions/workflows/ci.yml)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/Ronitsabhaya75/custom-github-runner)](https://github.com/Ronitsabhaya75/custom-github-runner)
@@ -8,7 +8,7 @@ An ultra-lightweight, secure, and Kubernetes-native GitHub Actions runner built 
 
 ---
 
-## 🏗️ Architecture & Component Design
+## Architecture & Component Design
 
 ```mermaid
 flowchart TD
@@ -16,13 +16,13 @@ flowchart TD
         GH_API[GitHub Actions Queue]
     end
 
-    subgraph Go Orchestrator Daemon (runner)
+    subgraph "Go Orchestrator Daemon (runner)"
         Parser[OCI Bundle Parser]
         Registry[Dynamic Language Registry]
         Engine[Pod Provisioning Loop]
     end
 
-    subgraph Kubernetes Worker Node (Control Plane)
+    subgraph "Kubernetes Worker Node (Control Plane)"
         K8s_API[Kubernetes API Server]
         
         subgraph Ephemeral Sandbox Pod
@@ -41,7 +41,7 @@ flowchart TD
 
 ---
 
-## ⚡ Key Features
+## Key Features
 
 * **Universal Language Registry:** Programmatically detects project dependencies and maps **32 different languages** to optimized Alpine-based container environments (e.g. Node, Go, Rust, Python, Java, etc.).
 * **Security & Capability Hardening:** Translates OCI specifications (`config.json`) into Kubernetes `SecurityContext` definitions:
@@ -55,7 +55,7 @@ flowchart TD
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
+## Tech Stack & Dependencies
 
 * **Go (Golang) 1.22+** — High-performance native daemon binary (~10MB footprint).
 * **client-go** — Programmatic integration with Kubernetes API Server.
@@ -64,7 +64,7 @@ flowchart TD
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -89,7 +89,7 @@ Execute the compiled runner binary. It will auto-detect your cluster status, set
 
 ---
 
-## 🧪 Comprehensive Testing Suite
+## Comprehensive Testing Suite
 
 We have implemented an industry-grade, multi-tier testing framework modeling the test specifications used by [**github.com/actions/runner-images**](https://github.com/actions/runner-images).
 
@@ -107,13 +107,13 @@ go test -tags=integration -v ./pkg/orchestrator/...
 
 ### 3. Automated CI Pipeline
 All test suites are fully automated inside a matrix-based [**GitHub Actions Workflow**](.github/workflows/ci.yml) verifying compatibility across:
-* 🐧 **Linux** (using real KinD integration clusters)
-* 🍎 **macOS** (Smoke testing & Darwin compiler validations)
-* 🏁 **Windows** (Smoke testing & MS-DOS/Powershell compiler validations)
+* **Linux** (using real KinD integration clusters)
+* **macOS** (Smoke testing & Darwin compiler validations)
+* **Windows** (Smoke testing & MS-DOS/Powershell compiler validations)
 
 ---
 
-## 🎯 Interview Talking Points (David's Blueprint)
+## Interview Talking Points (David's Blueprint)
 
 If discussing this project with engineering leaders like **David** or Microsoft Upstream teams, focus on these low-level container engineering patterns:
 

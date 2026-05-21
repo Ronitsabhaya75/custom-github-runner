@@ -1,0 +1,31 @@
+# Ephemeral Sandboxed Runner .gitignore
+
+# Executables
+runner
+runner.exe
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Go Test outputs
+*.test
+*.out
+*.prof
+
+# IDEs & System Files
+.DS_Store
+.DS_Store?
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Local Environment & VM Artifacts
+.colima/
+.lima/
+kubeconfig
+/tmp/

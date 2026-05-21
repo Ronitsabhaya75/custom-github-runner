@@ -44,7 +44,7 @@ jobs:
       # 2. Smoke Test: Verify Compilation & Configuration Loading
       - name: Execute Build Smoke Test
         run: |
-          go build -o runner cmd/runner/main.go
+          go build -o runner ./cmd/runner
 
       - name: Verify Dry-Run Output (Smoke Verification)
         shell: bash

@@ -43,8 +43,13 @@ jobs:
 
       # 2. Smoke Test: Verify Compilation & Configuration Loading
       - name: Execute Build Smoke Test
+        shell: bash
         run: |
-          go build -o runner ./cmd/runner
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            go build -o runner.exe ./cmd/runner
+          else
+            go build -o runner ./cmd/runner
+          fi
 
       - name: Verify Dry-Run Output (Smoke Verification)
         shell: bash

@@ -25,7 +25,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22.x'
+          go-version: '1.25.x'
           cache: true
 
       - name: Initialize CodeQL
@@ -98,7 +98,7 @@ jobs:
       - name: Setup Go Development Environment
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22.x'
+          go-version: '1.25.x'
           cache: true
 
       - name: Download Module Dependencies

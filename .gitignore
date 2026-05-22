@@ -29,3 +29,4 @@
 .lima/
 kubeconfig
 /tmp/
+.runner-config.json

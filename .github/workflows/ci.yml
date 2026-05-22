@@ -12,7 +12,7 @@ jobs:
   # =========================================================================
   codeql:
     name: Code Scanning - Action / CodeQL-Build (push)
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       security-events: write
       actions: read
@@ -45,7 +45,7 @@ jobs:
   # =========================================================================
   build:
     name: Runner CI / build (${{ matrix.os-name }}-${{ matrix.arch }}) (push)
-    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
@@ -104,9 +104,9 @@ jobs:
       - name: Download Module Dependencies
         run: go mod download
 
-      - name: Execute Package Unit Tests
-        # Run standard tests on target OS
-        run: go test -v ./pkg/sandbox/... ./pkg/github/...
+      - name: Execute Package Unit & Integration Tests
+        # Run standard and integration tests
+        run: go test -tags=integration -v ./...
 
       - name: Compile Lightweight Runner Binary
         shell: bash
@@ -131,7 +131,7 @@ jobs:
   # =========================================================================
   docker:
     name: Runner CI / docker (${{ matrix.image-name }}) (push)
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
@@ -167,7 +167,7 @@ jobs:
   dynamic:
     name: dynamic / submit-nuget (dynamic)
     needs: [build, docker]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Repository
